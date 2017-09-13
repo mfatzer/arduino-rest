@@ -22,13 +22,21 @@ DigitalInputResource::~DigitalInputResource() {
 }
 
 String DigitalInputResource::getInfoString() {
+	String labelHeader = "label";
+	String label = getLabel();
+	String typeHeader = "type";
+	String type = "DIGITAL_INPUT";
+	String pinHeader = "pin";
+	String pin = String(pinNr);
+	String onHeader = "on";
+	String on = valueAsString();
+
 	String infoString;
 	infoString += "{\n";
-	infoString += "label: " + getLabel() + ",\n";
-	infoString += "type: ";
-	infoString += "DIGITAL_INPUT,\n";
-	infoString += "pin: " + String(pinNr) + ",\n";
-	infoString += "on: " + valueAsString() + "\n";
+	addKeyValuePair(infoString, labelHeader, label, true);
+	addKeyValuePair(infoString, typeHeader, type, true);
+	addKeyValuePair(infoString, pinHeader, pin, true);
+	addKeyValuePair(infoString, onHeader, on, false);
 	infoString += "}\n";
 	return infoString;
 }

@@ -48,3 +48,10 @@ boolean AbstractResource::isResource(String& name) {
 	return getLabel() == name;
 }
 
+void AbstractResource::addKeyValuePair(String& output, String& key, String& value, boolean insertColon) {
+	output += "\"" + key + "\"" + ": " + "\"" + value + "\"";
+	if (insertColon == true) {
+		output += ",";
+	}
+	output += "\n";
+}

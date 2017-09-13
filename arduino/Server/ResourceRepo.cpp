@@ -58,7 +58,7 @@ void ResourceRepo::sendDataInfo(EthernetClient& client) {
 
 	String body;
 	body += "{\n";
-	body += "configuration: [\n";
+	body += "\"configuration\": [\n";
     // output the value of each analog input pin
     for (unsigned int i = 0; i < resourceCount; ++i) {
     	ResourceIf* resource = resources[i];

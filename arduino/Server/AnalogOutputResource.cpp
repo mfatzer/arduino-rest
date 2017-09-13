@@ -18,15 +18,24 @@ AnalogOutputResource::~AnalogOutputResource() {
 }
 
 String AnalogOutputResource::getInfoString() {
+	String labelHeader = "label";
+	String label = getLabel();
+	String typeHeader = "type";
+	String type = "ANALOG_OUTPUT";
+	String pinHeader = "pin";
+	String pin = String(pinNr);
+	String minHeader = "min";
+	String min = String(userMin);
+	String maxHeader = "max";
+	String max = String(userMax);
+
 	String infoString;
 	infoString += "{\n";
-	infoString += "label: " + getLabel() + ",\n";
-	infoString += "type: ";
-	infoString += "ANALOG_OUTPUT,\n";
-	infoString += "pin: " + String(pinNr) + ",\n";
-	infoString += "value: " + valueAsString() + "\n";
-	infoString += "min: " + String(userMin) + "\n";
-	infoString += "max: " + String(userMax) + "\n";
+	addKeyValuePair(infoString, labelHeader, label, true);
+	addKeyValuePair(infoString, typeHeader, type, true);
+	addKeyValuePair(infoString, pinHeader, pin, true);
+	addKeyValuePair(infoString, minHeader, min, true);
+	addKeyValuePair(infoString, maxHeader, max, false);
 	infoString += "}\n";
 	return infoString;
 }

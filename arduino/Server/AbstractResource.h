@@ -26,6 +26,7 @@ public:
 protected:
 	virtual String valueAsString() = 0;
 	virtual void applyStringValue(String value) = 0;
+	virtual void addKeyValuePair(String& output, String& key, String& value, boolean insertColon);
 
 private:
 	String label;
