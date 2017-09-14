@@ -82,7 +82,7 @@ void HttpRequest::parseRequest(String request) {
 		if (line.length() == 0) {
 			break;
 		}
-		headers += line;
+		headers += line + "\n";
 	}
 
 	// Body
@@ -90,7 +90,7 @@ void HttpRequest::parseRequest(String request) {
 		nextLineStartIndex = getNextLineStartIndex(request, startIndex);
 		String line = getLine(request, startIndex, nextLineStartIndex);
 		startIndex = nextLineStartIndex;
-		body += line;
+		body += line + "\n";
 	}
 }
 
@@ -104,12 +104,14 @@ void HttpRequest::parseRequestLine(String& requestLine) {
 }
 
 int HttpRequest::getNextLineStartIndex(String& request, int startIndex) {
-	unsigned int result = request.indexOf("\n", startIndex) + 1;
-	return (result < request.length()) ? result : -1;
+	int result = request.indexOf("\n", startIndex) + 1;
+	return (result < (int)request.length() && result >= 0) ? result : -1;
 }
 
 String HttpRequest::getLine(String& request, int startIndex, int nextLineStartIndex) {
-	return request.substring(startIndex, (nextLineStartIndex != -1) ? nextLineStartIndex : request.length() - 1);
+	String line = request.substring(startIndex, (nextLineStartIndex != -1) ? nextLineStartIndex : request.length() - 1);
+	line.trim();
+	return line;
 }
 
 String HttpRequest::getKey(String& headerLine) {

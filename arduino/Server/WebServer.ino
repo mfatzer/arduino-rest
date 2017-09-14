@@ -43,7 +43,7 @@ NmServer nmServer80(80);
 NmServer nmServer8080(8080);
 
 DigitalInputResource  switch1("Switch1", 10);
-DigitalOutputResource lampe1("Lampe1", 11, true);
+AnalogOutputResource lampe1("Lampe1", 11, 0, 0, 255, 0, 255);
 DigitalOutputResource lampe2("Lampe2", 12, true);
 DigitalOutputResource lampe3("Lampe3", 13, true);
 AnalogOutputResource dimmer1("Dimmer1", 8, 0, 0, 1000, 0, 1000);

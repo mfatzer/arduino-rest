@@ -9,7 +9,7 @@
 #include "ResponseFactory.h"
 
 
-const String AbstractResource::REQUEST_VALUE_LABEL = "Value";
+const String AbstractResource::REQUEST_VALUE_LABEL = "value";
 
 
 AbstractResource::AbstractResource(String label)

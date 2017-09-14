@@ -28,7 +28,6 @@ void NmServer::begin() {
 void NmServer::handleRequest() {
 	EthernetClient client = ethernetServer.available();
 	if (client) {
-		Serial.println("Client connected");
 		String request;
 
 		while (client.connected()) {
@@ -48,6 +47,5 @@ void NmServer::handleRequest() {
 
 		// give the web browser time to receive the data
 		delay(1);
-		Serial.println("client disconnected");
 	}
 }
